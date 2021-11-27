@@ -48,6 +48,7 @@ const typeDefs = gql`
         deleteUser(id:ID!):User!
         createMovie(input:createMovieInput):Movie!
         updateMovieName(input:updateMovieNameInput):Movie!
+        deleteMovie(id:ID!):Movie!
     }
 
     enum Nationality{

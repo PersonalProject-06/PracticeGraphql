@@ -79,6 +79,17 @@ const resolvers ={
 
             })   
             return movieUpdated
+        },
+        deleteMovie:(parent , args) =>{
+            const {id}= args
+            let movieDeleted;
+            MovieList.forEach((e,i)=>{
+                if(e.id == id){
+                    movieDeleted = e
+                    MovieList.splice(i,1)
+                }
+            })
+            return movieDeleted
         }
     }
 }
