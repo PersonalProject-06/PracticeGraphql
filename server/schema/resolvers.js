@@ -10,10 +10,10 @@ const resolvers ={
             const user = _.find(UserList, { id: Number(id) });
             return user
         },
-        mouvies:()=>{
+        movies:()=>{
             return MovieList
         },
-        mouvie:(parent , args)=>{
+        movie:(parent , args)=>{
             const name = args.name
             const mouvie = _.find(MovieList,{name})
             return mouvie
@@ -56,6 +56,14 @@ const resolvers ={
                 }
             })
             return UserDeleted
+        },
+        createMovie : (parent,args)=>{
+            const movie = args.input;
+            const id = MovieList[MovieList.length-1]["id"]
+            MovieList.push(movie)
+            MovieList[MovieList.length-1]["id"] = id + 1 
+            return MovieList[MovieList.length-1] 
+
         }
     }
 }
