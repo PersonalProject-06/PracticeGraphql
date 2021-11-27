@@ -1,92 +1,92 @@
-const { UserList, MovieList } =require("../data/fakeData")
+const { UserList, MovieList } = require("../data/fakeData")
 const _ = require("lodash");
-const resolvers ={
-    Query :{
-        users:()=>{
+const resolvers = {
+    Query: {
+        users: () => {
             return UserList
         },
-        user:(parent,args)=>{
+        user: (parent, args) => {
             const id = args.id
             const user = _.find(UserList, { id: Number(id) });
             return user
         },
-        movies:()=>{
+        movies: () => {
             return MovieList
         },
-        movie:(parent , args)=>{
+        movie: (parent, args) => {
             const name = args.name
-            const mouvie = _.find(MovieList,{name})
+            const mouvie = _.find(MovieList, { name })
             return mouvie
         }
-       
+
     },
-    User : {
-        friends:()=>{
-        return UserList.reverse()   
+    User: {
+        friends: () => {
+            return UserList.reverse()
         }
     },
-    Mutation:{
-        createUser:(parent,args)=>{
+    Mutation: {
+        createUser: (parent, args) => {
             const user = args.input;
-            const id = UserList[UserList.length-1]["id"]
+            const id = UserList[UserList.length - 1]["id"]
             UserList.push(user)
-            UserList[UserList.length-1]["id"] = id + 1 
-            return user 
+            UserList[UserList.length - 1]["id"] = id + 1
+            return user
         },
-        updateUserName:(parent,args)=>{
-            const {id , newUserName} = args.input
+        updateUserName: (parent, args) => {
+            const { id, newUserName } = args.input
             let UserUpdated;
-            UserList.forEach((e,i)=>{
-                if(e.id==id){
-                  e["username"]=newUserName
-                  UserUpdated = e  
+            UserList.forEach((e, i) => {
+                if (e.id == id) {
+                    e["username"] = newUserName
+                    UserUpdated = e
                 }
             })
             return UserUpdated
         },
-        deleteUser:(parent,args)=>{
-            const {id}=args
+        deleteUser: (parent, args) => {
+            const { id } = args
             console.log(id);
             let UserDeleted;
-            UserList.forEach((e,i)=>{
+            UserList.forEach((e, i) => {
                 console.log(e.id);
-                if(e.id==id){
+                if (e.id == id) {
                     UserDeleted = e
-                    UserList.splice(i,1)
+                    UserList.splice(i, 1)
                 }
             })
             return UserDeleted
         },
-        createMovie : (parent,args)=>{
+        createMovie: (parent, args) => {
             const movie = args.input;
-            const id = MovieList[MovieList.length-1]["id"]
+            const id = MovieList[MovieList.length - 1]["id"]
             MovieList.push(movie)
-            MovieList[MovieList.length-1]["id"] = id + 1 
-            return MovieList[MovieList.length-1] 
+            MovieList[MovieList.length - 1]["id"] = id + 1
+            return MovieList[MovieList.length - 1]
 
         },
-        updateMovieName : (parent,args)=>{
-            const {id,newMovieName} =args.input
-            console.log(id,newMovieName);
+        updateMovieName: (parent, args) => {
+            const { id, newMovieName } = args.input
+            console.log(id, newMovieName);
             let movieUpdated;
-            MovieList.forEach((e,i)=>{
-                if(e.id == id){
-                    e.name= newMovieName
+            MovieList.forEach((e, i) => {
+                if (e.id == id) {
+                    e.name = newMovieName
                     console.log(newMovieName);
                     movieUpdated = e
                     console.log(movieUpdated);
                 }
 
-            })   
+            })
             return movieUpdated
         },
-        deleteMovie:(parent , args) =>{
-            const {id}= args
+        deleteMovie: (parent, args) => {
+            const { id } = args
             let movieDeleted;
-            MovieList.forEach((e,i)=>{
-                if(e.id == id){
+            MovieList.forEach((e, i) => {
+                if (e.id == id) {
                     movieDeleted = e
-                    MovieList.splice(i,1)
+                    MovieList.splice(i, 1)
                 }
             })
             return movieDeleted
@@ -98,4 +98,4 @@ const resolvers ={
 
 
 
-module.exports ={resolvers}
+module.exports = { resolvers }
