@@ -43,6 +43,19 @@ const resolvers ={
                 }
             })
             return UserUpdated
+        },
+        deleteUser:(parent,args)=>{
+            const {id}=args
+            console.log(id);
+            let UserDeleted;
+            UserList.forEach((e,i)=>{
+                console.log(e.id);
+                if(e.id==id){
+                    UserDeleted = e
+                    UserList.splice(i,1)
+                }
+            })
+            return UserDeleted
         }
     }
 }
