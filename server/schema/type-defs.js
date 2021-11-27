@@ -38,11 +38,16 @@ const typeDefs = gql`
         yearOfPublication: Int!
         isInTheaters: Boolean=false 
     }
+    input updateMovieNameInput{
+        id:ID!
+        newMovieName:String!
+    }
     type Mutation{
         createUser(input:createUserInput):User!
         updateUserName(input:updateUserInput):User!
         deleteUser(id:ID!):User!
         createMovie(input:createMovieInput):Movie!
+        updateMovieName(input:updateMovieNameInput):Movie!
     }
 
     enum Nationality{

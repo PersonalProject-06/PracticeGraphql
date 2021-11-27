@@ -64,6 +64,21 @@ const resolvers ={
             MovieList[MovieList.length-1]["id"] = id + 1 
             return MovieList[MovieList.length-1] 
 
+        },
+        updateMovieName : (parent,args)=>{
+            const {id,newMovieName} =args.input
+            console.log(id,newMovieName);
+            let movieUpdated;
+            MovieList.forEach((e,i)=>{
+                if(e.id == id){
+                    e.name= newMovieName
+                    console.log(newMovieName);
+                    movieUpdated = e
+                    console.log(movieUpdated);
+                }
+
+            })   
+            return movieUpdated
         }
     }
 }
