@@ -3,9 +3,10 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import DisplayData from "./component/DisplayData";
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: `http://localhost:4000/graphql`,
+  uri: `${process.env.REACT_APP_GRAPHQL}`,
 });
 function App() {
+  console.log(process.env.REACT_APP_GRAPHQL)
   return (
     <ApolloProvider client={client}>
       <div className="App">
