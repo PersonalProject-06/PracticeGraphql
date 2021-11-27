@@ -28,8 +28,14 @@ const typeDefs = gql`
         age:Int!
         nationality:Nationality!
     }
+    input updateUserInput{
+        id:ID!
+        newUserName:String!
+
+    }
     type Mutation{
         createUser(input:createUserInput):User!
+        updateUserName(input:updateUserInput):User!
         
     }
 
