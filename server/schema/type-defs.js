@@ -22,7 +22,17 @@ const typeDefs = gql`
         mouvies:[Movie!]!
         mouvie(name:String!):Movie!
     }
-    
+    input createUserInput{
+        name:String!
+        username:String!
+        age:Int!
+        nationality:Nationality!
+    }
+    type Mutation{
+        createUser(input:createUserInput):User!
+        
+    }
+
     enum Nationality{
         CANADA
         BRAZIL

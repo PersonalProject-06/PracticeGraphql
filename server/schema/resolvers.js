@@ -24,6 +24,15 @@ const resolvers ={
         friends:()=>{
         return UserList.reverse()   
         }
+    },
+    Mutation:{
+        createUser:(parent,args)=>{
+            const user = args.input;
+            const id = UserList[UserList.length-1]["id"]
+            UserList.push(user)
+            UserList[UserList.length-1]["id"] = id + 1 
+            return user 
+        }
     }
 
 
