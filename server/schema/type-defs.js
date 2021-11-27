@@ -8,6 +8,7 @@ const typeDefs = gql`
         age:Int!
         nationality:Nationality!
         friends:[User!]
+        mouvie:[Movie!]
     }
     type Movie{
         id:ID!
@@ -16,9 +17,12 @@ const typeDefs = gql`
         isInTheaters: Boolean!
     }
    type Query {
-        users:[User]!
+        users:[User!]!
         user(id:ID):User!
+        mouvies:[Movie!]!
+        mouvie(name:String!):Movie!
     }
+    
     enum Nationality{
         CANADA
         BRAZIL
