@@ -13,3 +13,11 @@ export const QUERY_ALL_USER = gql`
     }
   }
 `;
+
+export const QUERY_CREATE_USER = gql `
+  mutation CreateUser($input : createUserInput!) {
+    createUser(input : $input) {
+      id 
+    }
+  }
+`
